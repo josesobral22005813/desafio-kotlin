@@ -1,9 +1,8 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
-import java.time.LocalDate
-import java.time.Period
+import java.util.*
 
-class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
+class Pessoa(var nome: String, var dataDeNascimento: Date) {
     var veiculos: MutableList<Veiculo> = mutableListOf()
     var carta: Carta? = null
     var posicao: Posicao = Posicao()
@@ -32,7 +31,7 @@ class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
         if (veiculoParaVender != null) {
             comprador.comprarVeiculo(veiculoParaVender)
             veiculos.remove(veiculoParaVender)
-            veiculoParaVender.dataDeAquisicao = LocalDate.now()
+            veiculoParaVender.dataDeAquisicao = Date()
         }
     }
 
@@ -52,12 +51,7 @@ class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
     }
 
     fun tirarCarta() {
-        val hoje = LocalDate.now()
-        val diferencaAnos = Period.between(dataDeNascimento, hoje).years
-
-        if(diferencaAnos >= 18) {
-            this.carta = Carta()
-        }
+        this.carta = Carta()
     }
 
     override fun toString(): String {

@@ -1,15 +1,12 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
-import java.time.LocalDate
+import java.util.*
 
 abstract class Veiculo(var identificador: String) : Movimentavel {
     var posicao: Posicao = Posicao()
-    var dataDeAquisicao: LocalDate? = null
+    var dataDeAquisicao: Date? = null
 
-    init {
-        dataDeAquisicao = LocalDate.now()
-    }
 
     abstract fun requerCarta(): Boolean
 
