@@ -1,5 +1,7 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
+import java.text.SimpleDateFormat
+
 class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
     val motor = motor
     override fun requerCarta(): Boolean {
@@ -13,6 +15,7 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
     }
 
     override fun toString(): String {
-        return "Carro(motor=$motor)"
+        val formatador = SimpleDateFormat("dd-MM-yyyy")
+        return "Carro | ${identificador} | ${formatador.parse(dataDeAquisicao.toString())} | ${posicao}"
     }
 }

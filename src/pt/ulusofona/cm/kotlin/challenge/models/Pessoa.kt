@@ -1,5 +1,6 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Pessoa(var nome: String, var dataDeNascimento: Date) {
@@ -61,6 +62,7 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
     }
 
     override fun toString(): String {
-        return "Pessoa(nome='$nome', dataDeNascimento=$dataDeNascimento, veiculos=$veiculos, carta=$carta, posicao=$posicao)"
+        val formatador = SimpleDateFormat("dd-MM-yyyy")
+        return "Pessoa | ${nome} | ${formatador.parse(dataDeNascimento.toString())} | Posicao | x:${posicao.x} | y:${posicao.y}"
     }
 }

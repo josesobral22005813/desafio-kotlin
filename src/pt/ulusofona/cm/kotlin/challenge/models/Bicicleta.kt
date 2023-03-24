@@ -1,5 +1,7 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
+import java.text.SimpleDateFormat
+
 class Bicicleta(identificador: String) : Veiculo(identificador) {
     override fun requerCarta(): Boolean {
         return false
@@ -10,6 +12,7 @@ class Bicicleta(identificador: String) : Veiculo(identificador) {
     }
 
     override fun toString(): String {
-        return "Bicicleta()"
+        val formatador = SimpleDateFormat("dd-MM-yyyy")
+        return "Bicicleta | ${identificador} | ${formatador.parse(dataDeAquisicao.toString())} | ${posicao}"
     }
 }
