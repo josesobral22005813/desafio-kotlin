@@ -1,6 +1,6 @@
 # Project exclude paths
 /out/
-/main/
-/test/
+/src/main/
+/src/test/
 /desafio-kotlin.iml/
 .idea
