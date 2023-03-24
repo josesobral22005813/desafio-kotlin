@@ -9,4 +9,8 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
             posicao.alterarPosicaoPara(x, y)
         }
     }
+
+    override fun toString(): String {
+        return "Carro(motor=$motor)"
+    }
 }

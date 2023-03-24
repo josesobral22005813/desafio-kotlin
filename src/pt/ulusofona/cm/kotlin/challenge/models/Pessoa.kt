@@ -26,8 +26,13 @@ class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
     }
 
     fun venderVeiculo(identificador: String, comprador: Pessoa) {
-        comprador.comprarVeiculo(pesquisarVeiculo(identificador))
-        veiculos.remove(pesquisarVeiculo(identificador))
+        val veiculoParaVender = pesquisarVeiculo(identificador)
+
+        if (veiculoParaVender != null) {
+            comprador.comprarVeiculo(veiculoParaVender)
+            veiculos.remove(veiculoParaVender)
+            veiculoParaVender.dataDeAquisicao = LocalDate.now()
+        }
     }
 
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
@@ -52,5 +57,9 @@ class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
         if(diferencaAnos >= 18) {
             this.carta = Carta()
         }
+    }
+
+    override fun toString(): String {
+        return "Pessoa(nome='$nome', dataDeNascimento=$dataDeNascimento, veiculos=$veiculos, carta=$carta, posicao=$posicao)"
     }
 }

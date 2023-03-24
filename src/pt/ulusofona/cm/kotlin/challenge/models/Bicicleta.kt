@@ -6,4 +6,8 @@ class Bicicleta(identificador: String) : Veiculo(identificador) {
     override fun moverPara(x: Int, y: Int) {
         posicao.alterarPosicaoPara(x, y)
     }
+
+    override fun toString(): String {
+        return "Bicicleta()"
+    }
 }
