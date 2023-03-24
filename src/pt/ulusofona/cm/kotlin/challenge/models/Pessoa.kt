@@ -1,6 +1,7 @@
+package pt.ulusofona.cm.kotlin.challenge.models
+
 import java.time.LocalDate
 import java.time.Period
-
 
 class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
     var veiculos: MutableList<Veiculo> = mutableListOf()
