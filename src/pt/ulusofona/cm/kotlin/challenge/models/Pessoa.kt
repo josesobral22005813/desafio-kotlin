@@ -51,6 +51,12 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
     }
 
     fun tirarCarta() {
+        var data18AnosAtras = Date()
+        data18AnosAtras.year = data18AnosAtras.year - 18
+
+        if(dataDeNascimento.after(data18AnosAtras)){
+            return
+        }
         this.carta = Carta()
     }
 

@@ -7,7 +7,6 @@ abstract class Veiculo(var identificador: String) : Movimentavel {
     var posicao: Posicao = Posicao()
     var dataDeAquisicao: Date = Date()
 
-
     abstract fun requerCarta(): Boolean
 
     override fun toString(): String {
