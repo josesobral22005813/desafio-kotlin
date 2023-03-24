@@ -5,6 +5,8 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
     }
 
     override fun moverPara(x: Int, y: Int) {
-
+        if(motor.estaLigado()) {
+            posicao.alterarPosicaoPara(x, y)
+        }
     }
 }

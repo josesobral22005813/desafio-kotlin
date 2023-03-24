@@ -1,5 +1,4 @@
-abstract class Veiculo(identificador: String) : Movimentavel {
-    var identificador: String = identificador
+abstract class Veiculo(var identificador: String) : Movimentavel {
     var posicao: Posicao = Posicao()
 
     abstract fun requerCarta(): Boolean

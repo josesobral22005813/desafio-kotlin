@@ -1,7 +1,4 @@
-class Posicao(x: Int, y: Int) {
-    var x: Int = x
-    var y: Int = y
-
+class Posicao(var x: Int, var y: Int) {
     constructor(): this(0, 0)
 
     fun alterarPosicaoPara(x: Int, y: Int) {

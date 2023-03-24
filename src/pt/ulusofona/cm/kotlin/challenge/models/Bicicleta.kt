@@ -4,7 +4,6 @@ class Bicicleta(identificador: String) : Veiculo(identificador) {
     }
 
     override fun moverPara(x: Int, y: Int) {
-
+        posicao.alterarPosicaoPara(x, y)
     }
-
 }

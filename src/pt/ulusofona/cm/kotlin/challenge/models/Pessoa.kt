@@ -1,9 +1,9 @@
-import java.util.Date
+import java.time.LocalDate
+import java.time.Period
 
-class Pessoa(nome: String, dataDeNascimento: Date) {
-    var nome: String = nome
+
+class Pessoa(var nome: String, var dataDeNascimento: LocalDate) {
     var veiculos: MutableList<Veiculo> = mutableListOf()
-    var dataDeNascimento: Date? = dataDeNascimento
     var carta: Carta? = null
     var posicao: Posicao = Posicao()
 
@@ -31,7 +31,7 @@ class Pessoa(nome: String, dataDeNascimento: Date) {
     }
 
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
-        var veiculoParaMover = pesquisarVeiculo(identificador)
+        val veiculoParaMover = pesquisarVeiculo(identificador)
         if(veiculoParaMover == null) {
             return
         }
@@ -46,6 +46,11 @@ class Pessoa(nome: String, dataDeNascimento: Date) {
     }
 
     fun tirarCarta() {
-        this.carta = Carta()
+        val hoje = LocalDate.now()
+        val diferencaAnos = Period.between(dataDeNascimento, hoje).years
+
+        if(diferencaAnos >= 18) {
+            this.carta = Carta()
+        }
     }
 }
