@@ -13,7 +13,9 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador), Ligave
     }
 
     override fun moverPara(x: Int, y: Int) {
-        posicao.alterarPosicaoPara(x, y)
+        if(estaLigado()){
+            posicao.alterarPosicaoPara(x, y)
+        }
     }
 
     override fun ligar() {
