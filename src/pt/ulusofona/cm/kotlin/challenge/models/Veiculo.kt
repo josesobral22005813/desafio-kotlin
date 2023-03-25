@@ -8,5 +8,4 @@ abstract class Veiculo(var identificador: String) : Movimentavel {
     var dataDeAquisicao: Date = Date()
 
     abstract fun requerCarta(): Boolean
-
 }
