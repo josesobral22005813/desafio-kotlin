@@ -13,12 +13,10 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador), Ligave
     }
 
     override fun moverPara(x: Int, y: Int) {
-        if(motor.estaLigado() && (posicao.x != x && posicao.y != y)) {
+        if(motor.estaLigado()) {
             posicao.alterarPosicaoPara(x, y)
-        } else if(!motor.estaLigado()){
-            throw VeiculoDesligadoException("O veiculo está desligado")
         } else {
-            throw AlterarPosicaoException("O veiculo já se encontra nessa posição")
+            throw VeiculoDesligadoException("O veiculo está desligado")
         }
     }
 

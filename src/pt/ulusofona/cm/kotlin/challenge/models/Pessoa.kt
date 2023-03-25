@@ -3,10 +3,11 @@ package pt.ulusofona.cm.kotlin.challenge.models
 import pt.ulusofona.cm.kotlin.challenge.exceptions.MenorDeIdadeException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Pessoa(var nome: String, var dataDeNascimento: Date) {
+class Pessoa(var nome: String, var dataDeNascimento: Date) : Movimentavel {
     var veiculos: MutableList<Veiculo> = mutableListOf()
     var carta: Carta? = null
     var posicao: Posicao = Posicao()
@@ -60,6 +61,10 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
             throw MenorDeIdadeException("A pessoa é menor de idade")
         }
         this.carta = Carta()
+    }
+
+    override fun moverPara(x: Int, y: Int) {
+        posicao.alterarPosicaoPara(x, y)
     }
 
     override fun toString(): String {

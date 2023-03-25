@@ -10,11 +10,7 @@ class Bicicleta(identificador: String) : Veiculo(identificador) {
     }
 
     override fun moverPara(x: Int, y: Int) {
-        if(posicao.x != x && posicao.y != y) {
-            posicao.alterarPosicaoPara(x, y)
-        } else {
-            throw AlterarPosicaoException("O veiculo já se encontra nessa posição")
-        }
+        posicao.alterarPosicaoPara(x, y)
     }
 
     override fun toString(): String {
