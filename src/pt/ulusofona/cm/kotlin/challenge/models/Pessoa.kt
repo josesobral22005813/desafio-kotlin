@@ -40,7 +40,7 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
         val veiculoParaMover = pesquisarVeiculo(identificador)
         if(veiculoParaMover is Carro && carta == null) {
-            throw PessoaSemCartaException("A Pessoa não tem carta para conduzir um Carro")
+            throw PessoaSemCartaException("$nome não tem carta para conduzir o veículo indicado")
         }
         veiculoParaMover.moverPara(x, y)
     }
