@@ -40,7 +40,7 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) : Movimentavel {
 
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
         val veiculoParaMover = pesquisarVeiculo(identificador)
-        if(veiculoParaMover is Carro && carta == null) {
+        if(veiculoParaMover.requerCarta() && !temCarta()) {
             throw PessoaSemCartaException("$nome não tem carta para conduzir o veículo indicado")
         }
         veiculoParaMover.moverPara(x, y)
@@ -60,7 +60,7 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) : Movimentavel {
         if(dataDeNascimento.after(data18AnosAtras)){
             throw MenorDeIdadeException("A pessoa é menor de idade")
         }
-        this.carta = Carta()
+        carta = Carta()
     }
 
     override fun moverPara(x: Int, y: Int) {
