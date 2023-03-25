@@ -16,6 +16,7 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador), Ligave
         if(estaLigado()){
             posicao.alterarPosicaoPara(x, y)
         }
+        desligar()
     }
 
     override fun ligar() {
