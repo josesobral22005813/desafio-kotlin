@@ -8,16 +8,10 @@ class Motor(var cavalos: Int, var cilindrada: Int) : Ligavel {
     private var ligado = false
 
     override fun ligar() {
-        if(ligado){
-            throw VeiculoLigadoException("O Veiculo já se encontra ligado")
-        }
         ligado = true
     }
 
     override fun desligar() {
-        if(!ligado){
-            throw VeiculoDesligadoException("O Veiculo já se encontra desligado")
-        }
         ligado = false
     }
 

@@ -20,10 +20,16 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador), Ligave
     }
 
     override fun ligar() {
+        if(estaLigado()){
+            throw VeiculoLigadoException("O Veiculo já se encontra ligado")
+        }
         motor.ligar()
     }
 
     override fun desligar() {
+        if(!estaLigado()){
+            throw VeiculoDesligadoException("O Veiculo já se encontra desligado")
+        }
         motor.desligar()
     }
 
