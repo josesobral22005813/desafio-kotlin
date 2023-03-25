@@ -13,6 +13,6 @@ class Bicicleta(identificador: String) : Veiculo(identificador) {
 
     override fun toString(): String {
         val formatador = SimpleDateFormat("dd-MM-yyyy")
-        return "Bicicleta | ${identificador} | ${formatador.parse(dataDeAquisicao.toString())} | ${posicao}"
+        return "Bicicleta | ${identificador} | ${formatador.format(dataDeAquisicao.time)} | ${posicao}"
     }
 }

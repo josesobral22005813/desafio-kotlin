@@ -9,7 +9,4 @@ abstract class Veiculo(var identificador: String) : Movimentavel {
 
     abstract fun requerCarta(): Boolean
 
-    override fun toString(): String {
-        return "Veiculo(identificador='$identificador', posicao=$posicao, dataDeAquisicao=$dataDeAquisicao)"
-    }
 }

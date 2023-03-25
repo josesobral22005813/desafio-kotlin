@@ -16,6 +16,6 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
 
     override fun toString(): String {
         val formatador = SimpleDateFormat("dd-MM-yyyy")
-        return "Carro | ${identificador} | ${formatador.parse(dataDeAquisicao.toString())} | ${posicao}"
+        return "Carro | ${identificador} | ${formatador.format(dataDeAquisicao.time)} | ${posicao}"
     }
 }
