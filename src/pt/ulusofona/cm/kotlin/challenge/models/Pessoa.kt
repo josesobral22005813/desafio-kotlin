@@ -1,5 +1,8 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
+import pt.ulusofona.cm.kotlin.challenge.exceptions.MenorDeIdadeException
+import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
+import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,29 +20,27 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
 
     }
 
-    fun pesquisarVeiculo(identificador: String): Veiculo? {
+    fun pesquisarVeiculo(identificador: String): Veiculo {
         for (veiculo in veiculos) {
             if(veiculo.identificador == identificador) {
                 return veiculo
             }
         }
-        return null
+        throw VeiculoNaoEncontradoException("O Veiculo com o identificador especificado não foi encontrado")
     }
 
     fun venderVeiculo(identificador: String, comprador: Pessoa) {
         val veiculoParaVender = pesquisarVeiculo(identificador)
 
-        if (veiculoParaVender != null) {
-            comprador.comprarVeiculo(veiculoParaVender)
-            veiculos.remove(veiculoParaVender)
-            veiculoParaVender.dataDeAquisicao = Date()
-        }
+        comprador.comprarVeiculo(veiculoParaVender)
+        veiculos.remove(veiculoParaVender)
+        veiculoParaVender.dataDeAquisicao = Date()
     }
 
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
         val veiculoParaMover = pesquisarVeiculo(identificador)
-        if(veiculoParaMover == null) {
-            return
+        if(veiculoParaMover is Carro && carta == null) {
+            throw PessoaSemCartaException("A Pessoa não tem carta para conduzir um Carro")
         }
         veiculoParaMover.moverPara(x, y)
     }
@@ -52,11 +53,11 @@ class Pessoa(var nome: String, var dataDeNascimento: Date) {
     }
 
     fun tirarCarta() {
-        var data18AnosAtras = Date()
+        val data18AnosAtras = Date()
         data18AnosAtras.year = data18AnosAtras.year - 18
 
         if(dataDeNascimento.after(data18AnosAtras)){
-            return
+            throw MenorDeIdadeException("A pessoa é menor de idade")
         }
         this.carta = Carta()
     }

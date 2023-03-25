@@ -1,5 +1,7 @@
 package pt.ulusofona.cm.kotlin.challenge.models
 
+import pt.ulusofona.cm.kotlin.challenge.exceptions.AlterarPosicaoException
+import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoDesligadoException
 import java.text.SimpleDateFormat
 
 class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
@@ -9,8 +11,12 @@ class Carro(identificador: String, motor: Motor): Veiculo(identificador) {
     }
 
     override fun moverPara(x: Int, y: Int) {
-        if(motor.estaLigado()) {
+        if(motor.estaLigado() && (posicao.x != x && posicao.y != y)) {
             posicao.alterarPosicaoPara(x, y)
+        } else if(!motor.estaLigado()){
+            throw VeiculoDesligadoException("O veiculo está desligado")
+        } else {
+            throw AlterarPosicaoException("O veiculo já se encontra nessa posição")
         }
     }
 
